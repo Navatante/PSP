@@ -1,4 +1,4 @@
-package tuberias;
+package tuberiastarea1;
 
 import java.util.Random;
 
