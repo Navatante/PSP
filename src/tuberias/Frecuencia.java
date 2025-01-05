@@ -38,5 +38,4 @@ public class Frecuencia {
                 frecuenciaVocales.get('o'),
                 frecuenciaVocales.get('u'));
     }
-
 }
