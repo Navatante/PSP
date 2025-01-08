@@ -38,5 +38,6 @@ public class ProgramaC {
 
         // Imprimir el resultado final para el ProgramaB
         System.out.println("Hay " + numerosMayoresQue20 + " números mayores que 20. " + outputD);
+
     }
 }
