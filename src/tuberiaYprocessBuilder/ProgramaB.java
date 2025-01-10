@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ProgramaB {
@@ -13,6 +12,13 @@ public class ProgramaB {
         // Creamos un ISR y un BR para leer del ProgramaA por tuberia.
         InputStreamReader inputStreamReaderSystemin = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReaderSystemin);
+
+        /**
+         * (Este comentario no tiene nada que ver con este codigo)
+         * En lugar de ArrayList podriamos haber creado un String vacio 'stringArray' y despues en el bucle while llenarlo con: stringArray+=linea+";";
+         * eso me crea un String con numeros separados con ;
+         * luego en el ProgramaC puedo usar: String[] arrayDeNumeros = args[0].split(";");
+         */
 
         // Creamos un ArrayList para llenarlo de lo que leamos por la entrada estandar.
         List<String> numeros = new ArrayList<>();
