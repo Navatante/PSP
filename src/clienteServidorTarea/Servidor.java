@@ -3,7 +3,6 @@ package clienteServidorTarea;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Servidor {
 
@@ -11,7 +10,7 @@ public class Servidor {
     private static Impresora impresora;
     private static List<Thread> hilos = new ArrayList<>();
     private static boolean aceptarConexiones = true;
-    static int contadorHilosActivos = 0;
+
 
 
     public static void main(String[] args) throws IOException {
@@ -21,28 +20,27 @@ public class Servidor {
             System.out.println("Servidor iniciado. Esperando conexiones en el puerto " + PORT + "...");
 
             while (aceptarConexiones) {
-
                 Socket clientSocket = serverSocket.accept(); // Bloquea hasta recibir conexión
                 System.out.println("Cliente conectado: " + clientSocket.getInetAddress().getHostAddress());
 
                 // Crea un nuevo hilo para manejar al cliente y lo agrega a la lista.
-                Thread hilo = new Thread(new ClientHandler(clientSocket, impresora, contadorHilosActivos));
+                Thread hilo = new Thread(new ClientHandler(clientSocket, impresora));
                 hilo.start();
                 hilos.add(hilo);
-                contadorHilosActivos++;
             }
 
-            // Nos aseguramos que todos los hilos finalizan antes de acabar el programa
-            for(Thread hilo : hilos) {
+            // Espera a que todos los hilos finalicen antes de cerrar el programa
+            for (Thread hilo : hilos) {
                 hilo.join();
             }
 
         } catch (IOException e) {
             System.out.println("Error en el servidor: " + e.getMessage());
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error al esperar los hilos: " + e.getMessage());
         }
     }
+
 }
 
 // Clase para manejar la conexión con un cliente en un hilo separado
@@ -61,13 +59,9 @@ class ClientHandler implements Runnable {
     private String nombreCliente;
     private String juego;
 
-    // todo testing
-    int contadorHilosActivos;
-
-    public ClientHandler(Socket clientSocket, Impresora impresora, int contadorHilosActivos) {
+    public ClientHandler(Socket clientSocket, Impresora impresora) {
         this.clientSocket = clientSocket;
         this.impresora = impresora;
-        this.contadorHilosActivos = contadorHilosActivos;
     }
 
     @Override
@@ -107,9 +101,6 @@ class ClientHandler implements Runnable {
                 System.out.println("Conexión con cliente cerrada: " + nombreCliente);
             } catch (IOException e) {
                 System.out.println("Error al cerrar la conexión con el cliente: " + e.getMessage());
-            } finally {
-                // Decrementa el contador de hilos activos
-                contadorHilosActivos--;
             }
         }
     }
