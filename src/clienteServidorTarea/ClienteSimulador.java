@@ -3,8 +3,7 @@ package clienteServidorTarea;
 import java.util.Scanner;
 
 public class ClienteSimulador {
-    public static String nombreJugador;
-    public static int contadorJugador = 1;
+    private static int contadorJugador = 1;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -18,16 +17,34 @@ public class ClienteSimulador {
         System.out.print("¿Cuántos jugadores para el Juego 3 (Piedra, Papel o Tijera)? ");
         int jugadoresJuego3 = scanner.nextInt();
 
-        lanzarHilosClientes(jugadoresJuego1, "1");
-        lanzarHilosClientes(jugadoresJuego2, "2");
-        lanzarHilosClientes(jugadoresJuego3, "3");
+        if(jugadoresJuego1>0) {
+            lanzarHilosClientes(jugadoresJuego1, "1");
+        } else {
+            System.out.println("Nadie va a jugar al Juego1.");
+        }
+
+        if(jugadoresJuego2>0) {
+            lanzarHilosClientes(jugadoresJuego2, "2");
+        } else {
+            System.out.println("Nadie va a jugar al Juego2.");
+        }
+
+        if(jugadoresJuego3>0) {
+            lanzarHilosClientes(jugadoresJuego3, "3");
+        } else {
+            System.out.println("Nadie va a jugar al Juego3.");
+        }
+
     }
 
     private static void lanzarHilosClientes(int cantidad, String juego) {
         for (int i = 1; i <= cantidad; i++) {
-            nombreJugador = "Jugador" + contadorJugador;
+            String nombreJugador = "Jugador" + contadorJugador;
             contadorJugador++;
-            new Thread(new Cliente(juego, nombreJugador)).start();
+
+            // Crea un hilo para cada cliente
+            Cliente cliente = new Cliente(juego, nombreJugador);
+            cliente.jugar();
         }
     }
 }

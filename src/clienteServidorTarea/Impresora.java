@@ -1,4 +1,4 @@
-package clienteServidorSencillo;
+package clienteServidorTarea;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

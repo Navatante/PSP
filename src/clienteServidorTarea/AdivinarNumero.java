@@ -1,4 +1,4 @@
-package clienteServidorSencillo;
+package clienteServidorTarea;
 
 import java.io.*;
 import java.util.Random;
@@ -21,35 +21,25 @@ public class AdivinarNumero {
 
     public void jugar() throws IOException {
 
-        salida.println("no"); // Mensaje inicial para que el cliente comience a enviar intentos.
+        int intentoCliente;
 
+        salida.println("intenta"); // Solicitar un intento al cliente.
         while (intentos < 10 && !acertado) {
-
             // Leer el intento del cliente.
-            String intentoDelCliente = entrada.readLine();
-            if (intentoDelCliente == null) {
-                salida.println("Error: no se recibió ningún intento. Inténtalo de nuevo.");
-                break; // Salimos del bucle si no hay datos.
-            }
-
-            int intento = Integer.parseInt(intentoDelCliente); // Convertimos el intento a número.
+            intentoCliente = Integer.parseInt(entrada.readLine());
             intentos++; // Incrementamos el contador de intentos.
 
-            if (intento == numeroAdivinar) {
+            if (intentoCliente == numeroAdivinar) {
                 acertado = true;
-                salida.println("fin"); // El cliente acertó.
-                salida.println("exito");
-            } else if (intento < numeroAdivinar) {
+            } else if (intentoCliente < numeroAdivinar) {
                 salida.println("mayor"); // El número es mayor.
             } else {
                 salida.println("menor"); // El número es menor.
             }
         }
 
-        if (!acertado) {
-            salida.println("fin");
-            salida.println("fracaso");
-        }
+        salida.println("fin");
+        salida.println(acertado ? "exito" : "fracaso");
     }
 
     @Override
@@ -60,6 +50,5 @@ public class AdivinarNumero {
         } else {
             return nombreCliente + ": No acertó el número.";
         }
-
     }
 }
