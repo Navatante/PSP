@@ -34,6 +34,8 @@ class ClientHandler implements Runnable {
     private final Socket clientSocket;
     private final Impresora impresora;
     private AdivinarNumero adivinarNumero;
+    private String nombreCliente;
+    private String juego;
 
     public ClientHandler(Socket clientSocket, Impresora impresora) {
         this.clientSocket = clientSocket;
@@ -46,8 +48,8 @@ class ClientHandler implements Runnable {
              PrintWriter salida = new PrintWriter(clientSocket.getOutputStream(), true)) {
 
 
-            String nombreCliente = entrada.readLine();
-            String juego = entrada.readLine();
+            nombreCliente = entrada.readLine();
+            juego = entrada.readLine();
             System.out.println("SERVIDOR: Manejando cliente: " + nombreCliente + " para jugar al Juego" + juego);
 
             switch (juego) {
@@ -69,7 +71,7 @@ class ClientHandler implements Runnable {
         } finally {
             try {
                 clientSocket.close();
-                System.out.println("Conexión con cliente cerrada: " + clientSocket.getInetAddress().getHostAddress());
+                System.out.println("Conexión con cliente cerrada: " + nombreCliente);
             } catch (IOException e) {
                 System.out.println("Error al cerrar la conexión con el cliente: " + e.getMessage());
             }
