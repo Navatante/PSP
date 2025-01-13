@@ -47,7 +47,6 @@ class ClientHandler implements Runnable {
         try (BufferedReader entrada = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
              PrintWriter salida = new PrintWriter(clientSocket.getOutputStream(), true)) {
 
-
             nombreCliente = entrada.readLine();
             juego = entrada.readLine();
             System.out.println("SERVIDOR: Manejando cliente: " + nombreCliente + " para jugar al Juego" + juego);
@@ -57,7 +56,7 @@ class ClientHandler implements Runnable {
                     System.out.println("SERVIDOR:" + nombreCliente + " va a jugar al Juego1.");
                     adivinarNumero = new AdivinarNumero(entrada, salida, nombreCliente);
                     adivinarNumero.jugar();
-                    impresora.imprimirJuego1(adivinarNumero.toString()); // Imprimimos Resultado
+                    impresora.imprimirResultadoJuego1(adivinarNumero.toString());
                     break;
                 case "2":
                     System.out.println("SERVIDOR:" + nombreCliente + " va a jugar al Juego2.");

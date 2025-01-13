@@ -9,11 +9,11 @@ public class Cliente implements Runnable {
     private static final String SERVER_ADDRESS = "localhost";
     private static final int PORT = 1234;
 
-    private final String nombreJugador;
+    private final String nombreCliente;
     private final String juego;
 
-    public Cliente(String juego, String nombreJugador) {
-        this.nombreJugador = nombreJugador;
+    public Cliente(String juego, String nombreCliente) {
+        this.nombreCliente = nombreCliente;
         this.juego = juego;
     }
 
@@ -39,12 +39,12 @@ public class Cliente implements Runnable {
                  BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter salida = new PrintWriter(socket.getOutputStream(), true)) {
 
-                System.out.println(nombreJugador + " conectado al servidor");
+                System.out.println(nombreCliente + " conectado al servidor");
 
                 // Envia datos al servidor
-                salida.println(nombreJugador); // Enviamos el nombre del cliente
+                salida.println(nombreCliente); // Enviamos el nombre del cliente
                 salida.println(juego); // Enviamos el juego al que va a jugar
-                System.out.println("Mensaje enviado al servidor: " + nombreJugador + ". Va a jugar al juego: " + juego);
+                System.out.println("Mensaje enviado al servidor: " + nombreCliente + ". Va a jugar al juego: " + juego);
 
                 // Empezar intentos
                 Random random = new Random();
@@ -87,7 +87,7 @@ public class Cliente implements Runnable {
             }
 
         } catch (IOException e) {
-            System.out.println("Error de conexión para " + nombreJugador + ": " + e.getMessage());
+            System.out.println("Error de conexión para " + nombreCliente + ": " + e.getMessage());
         }
     }
 
@@ -98,20 +98,20 @@ public class Cliente implements Runnable {
                  BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter salida = new PrintWriter(socket.getOutputStream(), true)) {
 
-                System.out.println(nombreJugador + " conectado al servidor");
+                System.out.println(nombreCliente + " conectado al servidor");
 
                 // Envia datos al servidor
-                salida.println(nombreJugador); // Enviamos el nombre del cliente
+                salida.println(nombreCliente); // Enviamos el nombre del cliente
                 salida.println(juego); // Enviamos el juego al que va a jugar
-                System.out.println("Mensaje enviado al servidor: " + nombreJugador + ". Va a jugar al juego: " + juego);
+                System.out.println("Mensaje enviado al servidor: " + nombreCliente + ". Va a jugar al juego: " + juego);
 
                 // Recibir respuesta del servidor
                 String response = entrada.readLine();
-                System.out.println(nombreJugador + " recibió del servidor: " + response);
+                System.out.println(nombreCliente + " recibió del servidor: " + response);
             }
 
         } catch (IOException e) {
-            System.out.println("Error de conexión para " + nombreJugador + ": " + e.getMessage());
+            System.out.println("Error de conexión para " + nombreCliente + ": " + e.getMessage());
         }
     }
 
@@ -122,20 +122,20 @@ public class Cliente implements Runnable {
                  BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter salida = new PrintWriter(socket.getOutputStream(), true)) {
 
-                System.out.println(nombreJugador + " conectado al servidor");
+                System.out.println(nombreCliente + " conectado al servidor");
 
                 // Envia datos al servidor
-                salida.println(nombreJugador); // Enviamos el nombre del cliente
+                salida.println(nombreCliente); // Enviamos el nombre del cliente
                 salida.println(juego); // Enviamos el juego al que va a jugar
-                System.out.println("Mensaje enviado al servidor: " + nombreJugador + ". Va a jugar al juego: " + juego);
+                System.out.println("Mensaje enviado al servidor: " + nombreCliente + ". Va a jugar al juego: " + juego);
 
                 // Recibir respuesta del servidor
                 String response = entrada.readLine();
-                System.out.println(nombreJugador + " recibió del servidor: " + response);
+                System.out.println(nombreCliente + " recibió del servidor: " + response);
             }
 
         } catch (IOException e) {
-            System.out.println("Error de conexión para " + nombreJugador + ": " + e.getMessage());
+            System.out.println("Error de conexión para " + nombreCliente + ": " + e.getMessage());
         }
     }
 

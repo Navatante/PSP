@@ -33,15 +33,15 @@ public class Impresora {
         escritorJuego3 = new PrintWriter(escritorBufferJuego3, true); // true para auto flush
     }
 
-    public synchronized void imprimirJuego1(String texto) {
+    public synchronized void imprimirResultadoJuego1(String texto) {
         escritorJuego1.println(texto);
     }
 
-    public synchronized void imprimirJuego2(String texto) {
+    public synchronized void imprimirResultadoJuego2(String texto) {
         escritorJuego2.println(texto);
     }
 
-    public synchronized void imprimirJuego3(String texto) {
+    public synchronized void imprimirResultadoJuego3(String texto) {
         escritorJuego3.println(texto);
     }
 }
