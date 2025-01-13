@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class Cliente {
 
-    private static final String SERVER_ADDRESS = "localhost";
-    private static final int PORT = 1234;
+    private static final String SERVIDOR = "localhost";
+    private static final int PUERTO = 1234;
 
     private final String nombreCliente;
     private final String juego;
@@ -37,16 +37,13 @@ public class Cliente {
     public void jugarJuego1() {
         try {
             // Crear socket y conectar al servidor
-            try (Socket socket = new Socket(SERVER_ADDRESS, PORT);
+            try (Socket socket = new Socket(SERVIDOR, PUERTO);
                  BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter salida = new PrintWriter(socket.getOutputStream(), true)) {
-
-                System.out.println(nombreCliente + " conectado al servidor");
 
                 // Envia datos al servidor
                 salida.println(nombreCliente); // Enviamos el nombre del cliente
                 salida.println(juego); // Enviamos el juego al que va a jugar
-                System.out.println("Mensaje enviado al servidor: " + nombreCliente + ". Va a jugar al juego: " + juego);
 
                 // Empezar intentos
                 int intento = -1;
@@ -97,11 +94,9 @@ public class Cliente {
     public void jugarJuego2() {
         try {
             // Crear socket y conectar al servidor
-            try (Socket socket = new Socket(SERVER_ADDRESS, PORT);
+            try (Socket socket = new Socket(SERVIDOR, PUERTO);
                  BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter salida = new PrintWriter(socket.getOutputStream(), true)) {
-
-                System.out.println(nombreCliente + " conectado al servidor");
 
                 // Envia datos al servidor
                 salida.println(nombreCliente); // Enviamos el nombre del cliente
@@ -139,11 +134,9 @@ public class Cliente {
     public void jugarJuego3() {
         try {
             // Crear socket y conectar al servidor
-            try (Socket socket = new Socket(SERVER_ADDRESS, PORT);
+            try (Socket socket = new Socket(SERVIDOR, PUERTO);
                  BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter salida = new PrintWriter(socket.getOutputStream(), true)) {
-
-                System.out.println(nombreCliente + " conectado al servidor");
 
                 // Envia datos al servidor
                 salida.println(nombreCliente); // Enviamos el nombre del cliente
@@ -177,7 +170,6 @@ public class Cliente {
             System.out.println("Error de conexión para " + nombreCliente + ": " + e.getMessage());
         }
     }
-
 
     // Genera un número aleatorio entre un rango dado (inclusive).
     private static int generarNumeroAleatorio(int min, int max, Random random) {

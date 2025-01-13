@@ -21,8 +21,6 @@ public class PiedraPapelTijera {
     }
 
     public void jugar() throws IOException {
-        System.out.println(nombreCliente + " comienza el juego de PIEDRA, PAPEL, TIJERA.");
-
         while (rondas < 5) {
             salida.println("elije");
             int eleccionCliente = Integer.parseInt(entrada.readLine());

@@ -21,8 +21,6 @@ public class LanzarDados {
     }
 
     public void jugar() throws IOException {
-        System.out.println(nombreCliente + " comienza el juego de LANZAMIENTO DE DADOS.");
-
         int dadoCliente;
         int dadoServidor;
 

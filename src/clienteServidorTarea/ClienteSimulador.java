@@ -19,20 +19,14 @@ public class ClienteSimulador {
 
         if(jugadoresJuego1>0) {
             lanzarHilosClientes(jugadoresJuego1, "1");
-        } else {
-            System.out.println("Nadie va a jugar al Juego1.");
         }
 
         if(jugadoresJuego2>0) {
             lanzarHilosClientes(jugadoresJuego2, "2");
-        } else {
-            System.out.println("Nadie va a jugar al Juego2.");
         }
 
         if(jugadoresJuego3>0) {
             lanzarHilosClientes(jugadoresJuego3, "3");
-        } else {
-            System.out.println("Nadie va a jugar al Juego3.");
         }
 
     }
