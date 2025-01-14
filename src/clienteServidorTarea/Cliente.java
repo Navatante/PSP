@@ -101,10 +101,9 @@ public class Cliente {
                 // Envia datos al servidor
                 salida.println(nombreCliente); // Enviamos el nombre del cliente
                 salida.println(juego); // Enviamos el juego al que va a jugar
-                System.out.println("Mensaje enviado al servidor: " + nombreCliente + ". Va a jugar al juego: " + juego);
 
-                String mensaje;
                 int dadoCliente = -1;
+                String mensaje;
 
                 // Bucle principal del juego
                 while ((mensaje = entrada.readLine()) != null) {
@@ -141,10 +140,9 @@ public class Cliente {
                 // Envia datos al servidor
                 salida.println(nombreCliente); // Enviamos el nombre del cliente
                 salida.println(juego); // Enviamos el juego al que va a jugar
-                System.out.println("Mensaje enviado al servidor: " + nombreCliente + ". Va a jugar al juego: " + juego);
 
-                String mensaje;
                 int eleccionCliente = -1;
+                String mensaje;
 
                 // Bucle principal del juego
                 while ((mensaje = entrada.readLine()) != null) {
